@@ -1,180 +1,145 @@
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-----------------------
 local Window = Rayfield:CreateWindow({
-	Name = "Sync's Punch Sim Shit",
-	LoadingTitle = "Loading Basic Functions...",
-	LoadingSubtitle = "don't leak this pls",
-	ConfigurationSaving = {
-		Enabled = false,
-		FolderName = "nil",
-		FileName = "nil"
-	},
+   Name = "Pet Punch UI",
+   LoadingTitle = "The1AndOnlySquid likes children",
+   LoadingSubtitle = "hide your family",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Sync's Cookie Logger"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
 })
-Rayfield:Notify({
-    Title = "Shit's been loaded...",
-    Content = "START HACKING 😇🕺",
-    Duration = 6.5,
-    Image = 4483362458,
-    Actions = { -- Notification Buttons
-        Ignore = {
-            Name = "Shut up.",
-            Callback = function()
-                print("👁️👄👁️")
-            end
-		},
-	},
-})
-
-local Tab = Window:CreateTab("Main") 
-local Section = Tab:CreateSection("Basic")
+local Tab = Window:CreateTab("Main Tools", 4483362458) -- Title, Image
 
 local Button = Tab:CreateButton({
-	Name = "Auto Punch (background click)",
-	Callback = function()
-_G.Active = true -- toggle on/off
+   Name = "Auto Tap Background",
+   Callback = function()
+   _G.Active = true -- toggle on/off
 while _G.Active do
   wait(0.1)
 game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
 end
-	end,
-})
-
-local Button = Tab:CreateButton({
-	Name = "OP Auto Click Gamepass",
-	Callback = function()
-getrenv()._G.autoClickerGamepassOn = true
-	end,
-})
-local Button = Tab:CreateButton({
-	Name = "Force Start Dungeon Round",
-	Callback = function()
-game:GetService("ReplicatedStorage").Events.DungeonEvent:FireServer("StartDungeon")
-	end,
-})
----------------------
-
-local Button = Tab:CreateButton({
-   Name = "WiP (Gifts)",
-   Callback = function()
- while wait(1) do
-local args = {
-    [1] = 1
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 2
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 3
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 4
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 5
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 6
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 7
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 8
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 9
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 10
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 11
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-wait(1)
-local args = {
-    [1] = 12
-}
-game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(unpack(args))
-end
-
    end,
 })
-
 local Button = Tab:CreateButton({
-	Name = "Toggle Dungeon Mob Farm (ON)",
-	Callback = function()
-_G.Active = true
-
-while _G.Active  do
-task.wait()
-for i,v in pairs(workspace.BreakableParts.Dungeon:GetChildren()) do
-
-if v:FindFirstChild("Head")~= nil then
-
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Head.CFrame
-end
+   Name = "OP Auto Clicker Gamepass",
+   Callback = function()
+   getrenv()._G.autoClickerGamepassOn = true
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Nothing yet",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Nothing yet",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Get 1000000 robux",
+   Callback = function()
+   game.StarterGui:SetCore("SendNotification", {
+Title = "Just logged you"; -- the title (ofc)
+Text = "jajajajajajajajaja"; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+   end,
+})
+----------------------------------
+local Tab = Window:CreateTab("Egg and Enemy Farm", 4483362458) -- Title, Image
+local Button = Tab:CreateButton({
+   Name = "Fast Open Forest 2 Egg (50 trophies) [ON]",
+   Callback = function()
+   _G.Active = true-- toggle on/off
+while _G.Active do
+  wait(0.3)
 local args = {
-    [1] = v
+    [1] = "Forest2"
 }
 
-game:GetService("ReplicatedStorage").Events.PunchEvent:FireServer(unpack(args))
-task.wait()
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+
 end
-end
-	end,
+   end,
 })
-
 local Button = Tab:CreateButton({
-	Name = "Toggle Dungeon Mob Farm (OFF)",
-	Callback = function()
-_G.Active = false
-
-while _G.Active  do
-task.wait()
-for i,v in pairs(workspace.BreakableParts.Dungeon:GetChildren()) do
-
-if v:FindFirstChild("Head")~= nil then
-
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Head.CFrame
-end
+   Name = "Fast Open Forest 2 Egg (50 trophies) [OFF]",
+   Callback = function()
+      _G.Active = false-- toggle on/off
+while _G.Active do
+  wait(0.3)
 local args = {
-    [1] = v
+    [1] = "Forest2"
 }
 
-game:GetService("ReplicatedStorage").Events.PunchEvent:FireServer(unpack(args))
-task.wait()
-end
-end
-	end,
-})
-local Paragraph = Tab:CreateParagraph({Title = "Dungeon Farming Info", Content = "If you toggle on Dungeon Farming, only 1 Dungeon can be running in the server at a time, otherwise you will teleport around the map rapidly destroying EVERYONE's mobs and bug."})
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
 
-local Tab = Window:CreateTab("Extras") 
+end
+   end,
+})
 local Button = Tab:CreateButton({
-	Name = "FPS Booster",
-	Callback = function()
-	-- Made by RIP#6666
+   Name = "Disable Enemy 3 second Cooldown (autofight)",
+   Callback = function()
+   local o
+o = hookfunction(wait, function(x)
+if x == 0.5 then
+    return nil
+end
+return o(x)
+end)
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Loop Teleport to Noob [ON]",
+   Callback = function()
+   	_G.Active = true-- toggle on/off
+while _G.Active do
+  wait(0.1)
+	local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+a.CFrame = CFrame.new(-1314.36487, 99.475975, 2572.0647, -0.994757295, 1.03636144e-09, -0.102263741, -4.52401977e-10, 1, 1.45348835e-08, 0.102263741, 1.45049457e-08, -0.994757295)
+end
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Loop Teleport to Noob [OFF]",
+   Callback = function()
+   	_G.Active = false-- toggle on/off
+while _G.Active do
+  wait(0.1)
+	local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+a.CFrame = CFrame.new(-1314.36487, 99.475975, 2572.0647, -0.994757295, 1.03636144e-09, -0.102263741, -4.52401977e-10, 1, 1.45348835e-08, 0.102263741, 1.45049457e-08, -0.994757295)
+end
+   end,
+})
+-------------------------
+local Tab = Window:CreateTab("Extra Tools", 4483362458) -- Title, Image
+local Button = Tab:CreateButton({
+   Name = "FPS Boost (Use when Fast Opening Eggs)",
+   Callback = function()
+   	-- Made by RIP#6666
 _G.Settings = {
     Players = {
         ["Ignore Me"] = true, -- Ignore your Character
@@ -201,49 +166,19 @@ _G.Settings = {
     }
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
-	end,
-})
-
-
-local Label = Tab:CreateLabel("V=Autoclick / B=Mouselock")
-local Button = Tab:CreateButton({
-	Name = "In-game Autoclicker (1 sec delay)",
-	Callback = function()
-		getgenv().Settings = {
-    ["Auto Click Keybind"] = "V",
-    ["Lock Mouse Position Keybind"] = "B",
-    ["Right Click"] = false,
-    ["GUI"] = true,
-    ["Delay"] = 1 
-}
-loadstring(game:HttpGet("https://raw.githubusercontent.com/BimbusCoder/Script/main/Auto%20Clicker.lua"))()
-	end,
+   end,
 })
 local Button = Tab:CreateButton({
-	Name = "Infinite Yield Admin",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-	end,
+   Name = "Rejoin Server",
+   Callback = function()
+   		game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
+   end,
 })
 local Button = Tab:CreateButton({
-	Name = "Rejoin Server",
-	Callback = function()
-		game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
-	end,
+   Name = "Infinite Yield Admin",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
+   end,
 })
-local Button = Tab:CreateButton({
-	Name = "Anti AFK",
-	Callback = function()
-			while wait(1) do
-		Players.LocalPlayer.Idled:Connect(function()
-			local VirtualUser = game:GetService("VirtualUser")
-			VirtualUser:CaptureController()
-			VirtualUser:ClickButton2(Vector2.new())
-		end)
-		end
-	end,
-})
---------------------------
-local Tab = Window:CreateTab("Library Maker🕺")
-local Paragraph = Tab:CreateParagraph({Title = "Made by", Content = "Synctional 🕺🕺💃💃"})
+-----------------------
 Rayfield:LoadConfiguration()
