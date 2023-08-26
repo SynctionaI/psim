@@ -44,15 +44,59 @@ local Button = Tab:CreateButton({
    end,
 })
 local Button = Tab:CreateButton({
-   Name = "Nothing yet",
+   Name = "Force Start Dungeon",
    Callback = function()
-   -- The function that takes place when the button is pressed
+   game:GetService("ReplicatedStorage").Events.DungeonEvent:FireServer("StartDungeon")
+      end,
+})
+local Button = Tab:CreateButton({
+   Name = "Auto Farm Dungeon Mobs [ON]",
+   Callback = function()
+   
+_G.Active = true
+
+while _G.Active  do
+task.wait()
+
+for i,v in pairs(workspace.BreakableParts.Dungeon:GetChildren()) do
+
+if v:FindFirstChild("Head")~= nil then
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Head.CFrame
+end
+local args = {
+    [1] = v
+}
+
+game:GetService("ReplicatedStorage").Events.PunchEvent:FireServer(unpack(args))
+task.wait()
+end
+end
    end,
 })
 local Button = Tab:CreateButton({
-   Name = "Nothing yet",
+   Name = "Auto Farm Dungeon Mobs [OFF]",
    Callback = function()
-   -- The function that takes place when the button is pressed
+   
+_G.Active = false
+
+while _G.Active  do
+task.wait()
+
+for i,v in pairs(workspace.BreakableParts.Dungeon:GetChildren()) do
+
+if v:FindFirstChild("Head")~= nil then
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Head.CFrame
+end
+local args = {
+    [1] = v
+}
+
+game:GetService("ReplicatedStorage").Events.PunchEvent:FireServer(unpack(args))
+task.wait()
+end
+end
    end,
 })
 local Button = Tab:CreateButton({
