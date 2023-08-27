@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 -----------------------
 local Window = Rayfield:CreateWindow({
-   Name = "Pet Punch UI",
+   Name = "Sync's Punch Sim Shit",
    LoadingTitle = "The1AndOnlySquid likes children",
    LoadingSubtitle = "hide your family",
    ConfigurationSaving = {
@@ -100,14 +100,47 @@ end
    end,
 })
 local Button = Tab:CreateButton({
-   Name = "Get 1000000 robux",
+   Name = "FPS Boost (Use when Fast Opening Eggs)",
    Callback = function()
-   game.StarterGui:SetCore("SendNotification", {
-Title = "Just logged you"; -- the title (ofc)
-Text = "jajajajajajajajaja"; -- what the text says (ofc)
-Icon = "rbxassetid://57254792"; -- the image if u want. 
-Duration = 5; -- how long the notification should in secounds
+   	-- Made by RIP#6666
+_G.Settings = {
+    Players = {
+        ["Ignore Me"] = true, -- Ignore your Character
+        ["Ignore Others"] = true -- Ignore other Characters
+    },
+    Meshes = {
+        Destroy = false, -- Destroy Meshes
+        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+    },
+    Images = {
+        Invisible = true, -- Invisible Images
+        LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
+        Destroy = false, -- Destroy Images
+    },
+    Other = {
+        ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+        ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+        ["No Explosions"] = true, -- Makes Explosion's invisible
+        ["No Clothes"] = true, -- Removes Clothing from the game
+        ["Low Water Graphics"] = true, -- Removes Water Quality
+        ["No Shadows"] = true, -- Remove Shadows
+        ["Low Rendering"] = true, -- Lower Rendering
+        ["Low Quality Parts"] = true -- Lower quality parts
+    }
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+   end,
 })
+local Button = Tab:CreateButton({
+   Name = "Rejoin Server",
+   Callback = function()
+   		game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Infinite Yield Admin",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
    end,
 })
 ----------------------------------
@@ -181,48 +214,31 @@ end
 -------------------------
 local Tab = Window:CreateTab("Extra Tools", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
-   Name = "FPS Boost (Use when Fast Opening Eggs)",
+   Name = "Equip to Copy Pet ID (Copied to clipboard)",
    Callback = function()
-   	-- Made by RIP#6666
-_G.Settings = {
-    Players = {
-        ["Ignore Me"] = true, -- Ignore your Character
-        ["Ignore Others"] = true -- Ignore other Characters
-    },
-    Meshes = {
-        Destroy = false, -- Destroy Meshes
-        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
-    },
-    Images = {
-        Invisible = true, -- Invisible Images
-        LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
-        Destroy = false, -- Destroy Images
-    },
-    Other = {
-        ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
-        ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
-        ["No Explosions"] = true, -- Makes Explosion's invisible
-        ["No Clothes"] = true, -- Removes Clothing from the game
-        ["Low Water Graphics"] = true, -- Removes Water Quality
-        ["No Shadows"] = true, -- Remove Shadows
-        ["Low Rendering"] = true, -- Lower Rendering
-        ["Low Quality Parts"] = true -- Lower quality parts
-    }
-}
-loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Rejoin Server",
-   Callback = function()
-   		game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Infinite Yield Admin",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-   end,
+   local mt = getrawmetatable(game)
+local backupnamecall = mt.__namecall
+local backupnewindex = mt.__newindex
+local backupindex = mt.__index
+local setreadonly = setreadonly or make_writeable
+local getnamecallmethod = getnamecallmethod or get_namecall_method
+local newcclosure = newcclosure or function(f) return f end
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(...)
+  local method = getnamecallmethod()
+  local args = {...}
+  if tostring(method) == "InvokeServer" and tostring(args[1]) == "EquipPet" then
+      setclipboard(args[2])
+      _G.PETID = args[2]
+      return backupnamecall(unpack(args))
+end
+
+  return backupnamecall(...)
+end)
+
+setreadonly(mt, false)
+      end,
 })
 -----------------------
 Rayfield:LoadConfiguration()
