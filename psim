@@ -188,19 +188,19 @@ end)
    end,
 })
 local Button = Tab:CreateButton({
-   Name = "Loop Teleport to Noob [ON]",
+   Name = "Loop Teleport to Buff Noob [ON]",
    Callback = function()
    	_G.Active = true-- toggle on/off
 while _G.Active do
   wait(0.1)
 	local a = game.Players.LocalPlayer.Character.HumanoidRootPart
 
-a.CFrame = CFrame.new(-1314.36487, 99.475975, 2572.0647, -0.994757295, 1.03636144e-09, -0.102263741, -4.52401977e-10, 1, 1.45348835e-08, 0.102263741, 1.45049457e-08, -0.994757295)
+a.CFrame = CFrame.new(-1389.27869, 99.4759903, 2572.15381, -0.999998987, 5.97718554e-07, -0.00144216686, 5.97716451e-07, 1, 1.90028482e-09, 0.00144216686, 1.03827602e-09, -0.999998987)
 end
    end,
 })
 local Button = Tab:CreateButton({
-   Name = "Loop Teleport to Noob [OFF]",
+   Name = "Loop Teleport to Buff Noob [OFF]",
    Callback = function()
    	_G.Active = false-- toggle on/off
 while _G.Active do
@@ -238,6 +238,18 @@ end
 end)
 
 setreadonly(mt, false)
+      end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Woop's Autism Buttom (Ignore if not woop)",
+   Callback = function()
+local w = workspace.BreakableParts.Stage1
+w.ChildAdded:Connect(function(child)
+child.Humanoid.Died:Connect(function()
+    child:Destroy()
+end)
+end)
       end,
 })
 -----------------------
