@@ -76,6 +76,47 @@ _G.Settings = {
 loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
    end,
 })
+------------------
+local Button = Tab:CreateButton({
+   Name = "Auto Farm Event Egg",
+   Callback = function()
+	_G.HugeHatch = true
+local OldNum = 0
+local debounce = false
+while _G.HugeHatch do
+local a, b, c, d, e = game:GetService("ReplicatedStorage").Events.GenerateInventory:InvokeServer()
+if OldNum ~= e then
+OldNum = e
+print (e)
+debounce = false
+end
+if tonumber(e) > 497 then
+print ("Hatching Event Egg")
+local args = {
+    [1] = "VisitEgg"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+else
+if debounce == false then
+debounce = true
+print ("LoserEgg")
+end
+local args = {
+    [1] = "Forest2"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+end
+wait()
+end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "STOP Auto Farm Event Egg",
+   Callback = function()
+   _G.HugeHatch = false
+   end,
+})
 ----------------------------------
 local Tab = Window:CreateTab("Egg and Enemy Farm", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
@@ -170,7 +211,13 @@ end)
 local Button = Tab:CreateButton({
    Name = "Remove Autofight Cooldown (Slower)(Woop's pc)",
    Callback = function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua"))()
+	local o
+o = hookfunction(wait, function(x)
+if x == 0.5 then
+    return nil
+end
+return o(x)
+end)
    end,
 })
 ---------
