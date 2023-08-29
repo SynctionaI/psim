@@ -193,7 +193,7 @@ game:GetService("ReplicatedStorage").Events.AutoFight:FireServer(unpack(args))
 })
 ---------------
 local Button = Tab:CreateButton({
-   Name = "Disable Auto-Fight Cooldown🤺 (UPGRADED)",
+   Name = "Auto-Fight Cooldown🤺 (UPGRADED)",
    Callback = function()
 spawn(function()
 hook = hookfunction(task.wait, function()
