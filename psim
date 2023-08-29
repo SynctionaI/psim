@@ -166,6 +166,14 @@ end)
 end)
    end,
 })
+---------
+local Button = Tab:CreateButton({
+   Name = "Remove Autofight Cooldown (Slower)(Woop's pc)",
+   Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua"))()
+   end,
+})
+---------
 local Button = Tab:CreateButton({
    Name = "Force Start Dungeon🤺",
    Callback = function()
@@ -223,6 +231,7 @@ end
    end,
 })
 -------------------------
+-------------------------
 local Tab = Window:CreateTab("Extra Tools", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
    Name = "Equip to Copy Pet ID©️ (Copied to clipboard)",
@@ -242,6 +251,33 @@ mt.__namecall = newcclosure(function(...)
   if tostring(method) == "InvokeServer" and tostring(args[1]) == "EquipPet" then
       setclipboard(args[2])
       _G.PETID = args[2]
+      return backupnamecall(unpack(args))
+end
+
+  return backupnamecall(...)
+end)
+
+setreadonly(mt, false)
+      end,
+})
+-------------
+local Button = Tab:CreateButton({
+   Name = "Equip to Copy Equipment ID (Copied to Clipboard)",
+   Callback = function()
+local mt = getrawmetatable(game)
+local backupnamecall = mt.__namecall
+local backupnewindex = mt.__newindex
+local backupindex = mt.__index
+local setreadonly = setreadonly or make_writeable
+local getnamecallmethod = getnamecallmethod or get_namecall_method
+local newcclosure = newcclosure or function(f) return f end
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(...)
+  local method = getnamecallmethod()
+  local args = {...}
+  if tostring(method) == "FireServer" and tostring(args[1]) == "EquipEquipment" then
+      setclipboard(args[2])
       return backupnamecall(unpack(args))
 end
 
