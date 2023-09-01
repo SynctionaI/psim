@@ -78,47 +78,16 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord
 })
 ------------------
 local Button = Tab:CreateButton({
-   Name = "Auto Farm Event Egg",
+   Name = "Open Equipment Shop⚒️",
    Callback = function()
-	_G.HugeHatch = true
-local OldNum = 0
-local debounce = false
-while _G.HugeHatch do
-local a, b, c, d, e = game:GetService("ReplicatedStorage").Events.GenerateInventory:InvokeServer()
-if OldNum ~= e then
-OldNum = e
-print (e)
-debounce = false
+   if game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Frame.Visible == false then
+    game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Frame.Visible = true
 end
-if tonumber(e) > 497 then
-print ("Hatching Event Egg")
-local args = {
-    [1] = "VisitEgg"
-}
-game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
-else
-if debounce == false then
-debounce = true
-print ("LoserEgg")
-end
-local args = {
-    [1] = "Forest2"
-}
-game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
-end
-wait()
-end
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "STOP Auto Farm Event Egg",
-   Callback = function()
-   _G.HugeHatch = false
-   end,
+game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Enabled = true
+      end,
 })
 ----------------------------------
-local Tab = Window:CreateTab("Egg and Enemy Farm", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Eggs", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
    Name = "Fast Open Forest 2 Egg🌲🥚 (50)",
    Callback = function()
@@ -191,7 +160,50 @@ local args = {
 game:GetService("ReplicatedStorage").Events.AutoFight:FireServer(unpack(args))
    end,
 })
----------------
+
+local Button = Tab:CreateButton({
+   Name = "Auto Farm Event Egg🎊",
+   Callback = function()
+	_G.HugeHatch = true
+local OldNum = 0
+local debounce = false
+while _G.HugeHatch do
+local a, b, c, d, e = game:GetService("ReplicatedStorage").Events.GenerateInventory:InvokeServer()
+if OldNum ~= e then
+OldNum = e
+print (e)
+debounce = false
+end
+if tonumber(e) > 497 then
+print ("Hatching Event Egg")
+local args = {
+    [1] = "VisitEgg"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+else
+if debounce == false then
+debounce = true
+print ("LoserEgg")
+end
+local args = {
+    [1] = "Forest2"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+end
+wait()
+end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "STOP Auto Farm Event Egg🛑🎊",
+   Callback = function()
+   _G.HugeHatch = false
+   end,
+})
+-------------------------
+local Tab = Window:CreateTab("Enemy Auto Farm", 4483362458) -- Title, Image
+
 local Button = Tab:CreateButton({
    Name = "Auto-Fight Cooldown🤺 (UPGRADED)",
    Callback = function()
@@ -209,7 +221,7 @@ end)
 })
 ---------
 local Button = Tab:CreateButton({
-   Name = "Remove Autofight Cooldown (Slower)(Woop's pc)",
+   Name = "Slower Autofight Cooldown(Woop can't use👶)",
    Callback = function()
 	local o
 o = hookfunction(wait, function(x)
@@ -277,7 +289,17 @@ end
 end
    end,
 })
--------------------------
+local Button = Tab:CreateButton({
+   Name = "Autism Button👶(Destroy Extra Enemy Models)",
+   Callback = function()
+local w = workspace.BreakableParts.Stage1
+w.ChildAdded:Connect(function(child)
+child.Humanoid.Died:Connect(function()
+    child:Destroy()
+end)
+end)
+      end,
+})
 -------------------------
 local Tab = Window:CreateTab("Extra Tools", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
@@ -338,7 +360,7 @@ setreadonly(mt, false)
 local Button = Tab:CreateButton({
    Name = "Simple Spy Remote Logger🕵️‍♂️",
    Callback = function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua"))()
+	loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))
    end,
 })
 -------------
@@ -362,16 +384,5 @@ local Button = Tab:CreateButton({
    end,
 })
 -----------
-local Button = Tab:CreateButton({
-   Name = "Autism Button😶‍🌫️ (Destroy Extra Enemy Models)",
-   Callback = function()
-local w = workspace.BreakableParts.Stage1
-w.ChildAdded:Connect(function(child)
-child.Humanoid.Died:Connect(function()
-    child:Destroy()
-end)
-end)
-      end,
-})
 -----------------------
 Rayfield:LoadConfiguration()
