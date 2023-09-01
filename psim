@@ -86,6 +86,15 @@ end
 game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Enabled = true
       end,
 })
+local Button = Tab:CreateButton({
+   Name = "Close Equipment Shop⚒️",
+   Callback = function()
+   if game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Frame.Visible == true then
+    game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Frame.Visible = false
+end
+game:GetService("Players").LocalPlayer.PlayerGui.EquipmentShop.Enabled = false
+      end,
+})
 ----------------------------------
 local Tab = Window:CreateTab("Eggs", 4483362458) -- Title, Image
 local Button = Tab:CreateButton({
