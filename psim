@@ -360,7 +360,7 @@ setreadonly(mt, false)
 local Button = Tab:CreateButton({
    Name = "Simple Spy Remote Logger🕵️‍♂️",
    Callback = function()
-	loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))
+	loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
    end,
 })
 -------------
