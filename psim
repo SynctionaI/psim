@@ -203,6 +203,40 @@ wait()
 end
    end,
 })
+-----------
+local Button = Tab:CreateButton({
+   Name = "Auto Farm Event Egg (Space afk)🎊",
+   Callback = function()
+_G.HugeHatch = true
+local OldNum = 0
+local debounce = false
+while _G.HugeHatch do
+local a, b, c, d, e = game:GetService("ReplicatedStorage").Events.GenerateInventory:InvokeServer()
+if OldNum ~= e then
+OldNum = e
+print (e)
+debounce = false
+end
+if tonumber(e) > 498 then
+print ("Hatching Event Egg")
+local args = {
+    [1] = "VisitEgg"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+else
+if debounce == false then
+debounce = true
+print ("LoserEgg")
+end
+local args = {
+    [1] = "10"
+}
+game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(unpack(args))
+end
+wait()
+end
+   end,
+})
 
 local Button = Tab:CreateButton({
    Name = "STOP Auto Farm Event Egg🛑🎊",
